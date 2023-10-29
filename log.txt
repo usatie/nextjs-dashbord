@@ -6,3 +6,27 @@ echo "*.swp" >> .gitignore
 npm i
 npm run dev
 ```
+
+# Chapter 2: CSS Styling
+```
+$ vim app/layout.tsx
++ import '@/app/ui/global.css';
+
+$ vim app/page.tsx
++ <div className="h-0 w-0 border-b-[30px] border-l-[20px] border-r-[20px] border-b-black border-l-transparent border-r-transparent" />
+
+$ vim app/ui/home.module.css
++ .shape {
++   height: 0;
++   width: 0;
++   border-bottom: 30px solid black;
++   border-left: 20px solid transparent;
++   border-right: 20px solid transparent;
++ }
+
+$ vim app/page.tsx
++ import styles from './home.module.css';
+```
+- Import Error: `Module not found: Can't resolve`
+	- Resolved by `import styles from '@/app/ui/home.module.css';`
+- `nav-links.tsx` seems to not have `cslx`
