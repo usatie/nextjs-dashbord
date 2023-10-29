@@ -76,3 +76,29 @@ $ vim app/page.tsx
 +             />
 ```
 - `hidden` to remove the image from the DOM on mobile screens, and `md:block` to show the image on desktop screens.
+
+# Chapter 4: Creating Layouts and Pages
+```
+$ mkdir app/login app/dashboard
+$ vim app/login/page.tsx
+
+$ vim app/dashboard/page.tsx
++export default function Page() {
++  return <p>Dashboard Page</p>;
++}
+
+$ mkdir app/dashboard/customers app/dashboard/invoices
+$ vim app/dashboard/customers/page.tsx
+$ vim app/dashboard/invoices/page.tsx
+```
+## Creating the dashboard layout
+```
+$ vim app/dashboard/layout.tsx
++export default function Page() {
++  return (
++    <main className="flex min-h-screen flex-col p-6">
++	  <div>This is login page</div>
++    </main>
++  );
++}
+```
