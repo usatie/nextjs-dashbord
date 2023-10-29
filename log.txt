@@ -170,10 +170,23 @@ $ npm run seed
 $ view app/lib/data.ts
 ```
 ## Fetching data for the dashboard overview page
+### Fetching data for <RevenueChart/>
 ```
 $ vim app/dashboard/page.tsx
 +import { fetchRevenue } from '@/app/lib/data';
 +  const revenue = await fetchRevenue();
 -        {/* <RevenueChart revenue={revenue}  /> */}
 +        <RevenueChart revenue={revenue}  />
+```
+### Fetching data for <LatestInvoices/>
+```
+$ vim app/dashboard/page.tsx
+-import { fetchRevenue } from '@/app/lib/data';
++import { fetchRevenue, fetchLatestInvoices } from '@/app/lib/data';
++  const latestInvoices = await fetchLatestInvoices();
+-        {/* <LatestInvoices latestInvoices={latestInvoices} /> */}
++        <LatestInvoices latestInvoices={latestInvoices} />
+```
+### Practice: Fetch data for the <Card> components
+```
 ```
