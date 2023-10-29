@@ -138,3 +138,24 @@ $ vim app/ui/dashboard/nav-links.tsx
 ### Automatic code-splitting and prefetching
 - Next.js automatically code splits your application by route segments
 - in a production, whenever <Link> components appear in the browser's viewport, Next.js automatically prefetches the code for the linked route in the background
+
+# Chapter 6: Setting Up Your Database
+## Create a GitHub repository
+## Create a Vercel account
+## Connect and deploy your project
+## Create a Postgres database
+```
+$ vim .env
+$ npm i @vercel/postgres
+```
+## Seed your database
+- `scripts/seed.js`
+```
+$ vim package.json
++       "seed": "node -r dotenv/config ./scripts/seed.js"
+
+$ npm i bcrypt
+$ npm run seed
+```
+## Exploring your database
+## Executing queries
