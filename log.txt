@@ -159,3 +159,21 @@ $ npm run seed
 ```
 ## Exploring your database
 ## Executing queries
+
+# Chapter 7: Fetching Data
+## Choosing how to fetch data
+- API Layer
+- Database queries
+### Using Server Components to fetch data
+### Using SQL
+```
+$ view app/lib/data.ts
+```
+## Fetching data for the dashboard overview page
+```
+$ vim app/dashboard/page.tsx
++import { fetchRevenue } from '@/app/lib/data';
++  const revenue = await fetchRevenue();
+-        {/* <RevenueChart revenue={revenue}  /> */}
++        <RevenueChart revenue={revenue}  />
+```
