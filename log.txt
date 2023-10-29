@@ -188,5 +188,6 @@ $ vim app/dashboard/page.tsx
 +        <LatestInvoices latestInvoices={latestInvoices} />
 ```
 ### Practice: Fetch data for the <Card> components
+### Parallel data fetching
 ```
 ```
