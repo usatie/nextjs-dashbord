@@ -1,0 +1,8 @@
+# Chapter 1: Getting Started
+```
+npx create-next-app@latest nextjs-dashboard --use-npm --example "https://github.com/vercel/next-learn/tree/main/dashboard/starter-example"
+cd nextjs-dashboard
+echo "*.swp" >> .gitignore
+npm i
+npm run dev
+```
