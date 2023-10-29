@@ -30,3 +30,49 @@ $ vim app/page.tsx
 - Import Error: `Module not found: Can't resolve`
 	- Resolved by `import styles from '@/app/ui/home.module.css';`
 - `nav-links.tsx` seems to not have `cslx`
+
+# Chapter 3: Optimizing font images
+```
+$ vim /app/ui/fonts.ts
++ import { Inter } from 'next/font/google';
++ 
++ export const inter = Inter({ subsets: ['latin'] });
+
+$ vim app/layout.tsx
++ import { inter } from '@/app/ui/fonts';
+...
+-     <body>{children}</body>
++     <body className={`${inter.className} antialiased`}>{children}</body>
+
+$ vim /app/ui/fonts.ts
++ import { Lusitana } from 'next/font/google';
++ 
++ export const lusitana = Lusitana({ subsets: ['latin'], weight: '700' });
+
+$ vim app/page.tsx
+-       { /* <AcmeLogo /> */ }
++       {  <AcmeLogo /> }
+...
+-          <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
++          <p className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`
+}>
+
+# Optimize images
+$ vim app/page.tsx
+-          {/* Add Hero Images Here */}
++                 <Image
++                   src="/hero-desktop.png"
++                       width={1000}
++                       height={760}
++                       className="hidden md:block"
++                       alt="Screenshots of the dashboard project showing desktop and mobile versions"
++             />
++                 <Image
++                   src="/hero-mobile.png"
++                       width={560}
++                       height={620}
++                       className="block md:hidden"
++                       alt="Screenshots of the dashboard project showing desktop and mobile versions"
++             />
+```
+- `hidden` to remove the image from the DOM on mobile screens, and `md:block` to show the image on desktop screens.
