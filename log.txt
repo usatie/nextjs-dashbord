@@ -191,3 +191,22 @@ $ vim app/dashboard/page.tsx
 ### Parallel data fetching
 ```
 ```
+
+# Chapter 8: Static and Dynamic Rendering
+## What is Static Rendering?
+- Data fetching and rendering happens on the server at build time (when you deploy) or during revalidation.
+## What is Dynamic Rendering?
+- Content is rendered on the server for each user at request time
+## Making the dashboard dynamic
+```
++import { unstable_noStore as noStore } from "next/cache";
+...
++  noStore();
+```
+## Simulating a Slow Data Fetch
+- With dynamic rendering, your application is only as fast as your slowest data fetch.
+```
++    console.log('Fetching revenue data...');
++    await new Promise((resolve) => setTimeout(resolve, 3000));
++    console.log('Data fetch complete after 3 seconds.');
+```
