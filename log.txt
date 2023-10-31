@@ -231,3 +231,4 @@ $ mkdir 'app/dashboard/(overview)'
 $ mv app/dashboard/loading.tsx "app/dashboard/(overview)/"
 $ mv app/dashboard/page.tsx "app/dashboard/(overview)/"
 ```
+### Streaming a component
