@@ -232,3 +232,8 @@ $ mv app/dashboard/loading.tsx "app/dashboard/(overview)/"
 $ mv app/dashboard/page.tsx "app/dashboard/(overview)/"
 ```
 ### Streaming a component
+
+# Chapter 10: Partial Rendering (Optional)
+- Partial rendering is a hybrid approach that combines the best of static and dynamic rendering.
+- This is different from how your application behaves today, where whole routes were fully static or dynamic.
+- Is it different from Streaming with Suspense?
