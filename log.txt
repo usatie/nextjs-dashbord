@@ -237,3 +237,19 @@ $ mv app/dashboard/page.tsx "app/dashboard/(overview)/"
 - Partial rendering is a hybrid approach that combines the best of static and dynamic rendering.
 - This is different from how your application behaves today, where whole routes were fully static or dynamic.
 - Is it different from Streaming with Suspense?
+
+# Chapter 11: Adding Search and Pagination
+## Starting code
+## Adding the search functionality
+- "use client" - This is a Client Component, which means you can use event listeners and hooks.
+```
+defaultValue vs. value / Controlled vs. Uncontrolled
+
+If you're using state to manage the value of an input, you'd use the value attribute to make it a controlled component. This means React would manage the input's state.
+
+However, since you're not using state, you can use defaultValue. This means the native input will manage its own state. This is ok since you're saving the search query to the URL instead of state.
+```
+## Best practice: Debouncing
+```
+$ npm i use-debounce
+```
