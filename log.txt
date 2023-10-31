@@ -210,3 +210,25 @@ $ vim app/dashboard/page.tsx
 +    await new Promise((resolve) => setTimeout(resolve, 3000));
 +    console.log('Data fetch complete after 3 seconds.');
 ```
+
+# Chapter 9: Streaming
+## Streaming a whole page with loading.tsx
+```
+$ vim app/dashboard/loading.tsx
++export default function Loading() {
++  return <div>Loading...</div>;
++}
+```
+### Addding loading skeleton
+```
+$ vim app/dashboard/loading.tsx
++import DashboardSkeleton from '@/app/ui/skeletons';
++  return <DashboardSkeleton />;
+```
+### Fixing the loading skeleton bug with route groups
+```
+$ mkdir 'app/dashboard/(overview)'
+$ mv app/dashboard/loading.tsx "app/dashboard/(overview)/"
+$ mv app/dashboard/page.tsx "app/dashboard/(overview)/"
+```
+### Streaming a component
