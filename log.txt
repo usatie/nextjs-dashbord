@@ -281,3 +281,31 @@ $ npm i zod
 
 ### 5. Inserting the data into your database
 ### 6. Revalidate and redirect
+
+## Updating an invoice
+1. Create a new dynamic route segment with the invoice id.
+2. Read the invoice id from the page params.
+3. Fetch the specific invoice from your database.
+4. Pre-populate the form with the invoice data.
+5. Update the invoice data in your database.
+### 1. Create a new dynamic route segment with the invoice id.
+```
+$ mkdir -p "app/dashboard/invoices/[id]/edit"
+$ vim "app/dashboard/invoices/[id]/edit/page.tsx"
+```
+### 4. Pass the id to the Server Action
+```
+const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+```
+- Note: Using a hidden input field in your form also works (e.g. <input type="hidden" name="id" value={invoice.id} />). However, the values will appear as full text in the HTML source, which is not ideal for sensitive data like ids.
+
+```
+$ vim app/lib/actions.ts
++  const { customerId, amount, status } = UpdateInvoice.parse({
++	id: formData.get('id'),
++    customerId: formData.get('customerId'),
++    amount: formData.get('amount'),
++    status: formData.get('status'),
++  });
+```
+- `id` is a required field in the UpdateInvoice schema, typo in the material
