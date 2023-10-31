@@ -310,3 +310,14 @@ $ vim app/lib/actions.ts
 ```
 - `id` is a required field in the UpdateInvoice schema, typo in the material
 ## Deleting an invoice
+
+# Chapter 13: Handling Errors
+## Adding `try/catch` to Server Actions
+- Note how redirect is being called outside of the try/catch block. This is because redirect works by throwing an error which would be caught by the catch block. To avoid this, you can call redirect after try/catch. redirect would only be reachable if try is successful.
+## Handling all errors with error.tsx
+```
+$ vim app/dashboard/invoices/error.tsx
+```
+
+## Handling 404 errors with the notFound function
+- Invoking the notFound() function throws a NEXT_NOT_FOUND error and terminates rendering of the route segment in which it was thrown.
