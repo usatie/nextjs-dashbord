@@ -309,3 +309,4 @@ $ vim app/lib/actions.ts
 +  });
 ```
 - `id` is a required field in the UpdateInvoice schema, typo in the material
+## Deleting an invoice
