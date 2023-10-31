@@ -253,3 +253,31 @@ However, since you're not using state, you can use defaultValue. This means the 
 ```
 $ npm i use-debounce
 ```
+
+# Chapter 12: Mutating Data
+## Creating an invoice
+### 1. Create a new route and form
+```
+$ mkdir app/dashboard/invoices/create
+$ vim app/dashboard/invoices/create/page.tsx
+```
+
+### 2. Create a Server Action
+```
+$ vim app/lib/actions.ts
+```
+- Good to know: In normal HTML, you'd pass a URL to the action attribute. This URL would be destination where your form data should be submitted (usually an API endpoint).
+- However, in React, the action attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
+- Behind the scenes, Server Actions create a POST API endpoint. This is why you don't need to create API endpoints when using Server Actions.
+
+### 3. Extract the data from formData
+- Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries(). For example:
+- `const rawFormData = Object.fromEntries(formData.entries())`
+
+### 4. Validate and prepare the data
+```
+$ npm i zod
+```
+
+### 5. Inserting the data into your database
+### 6. Revalidate and redirect
