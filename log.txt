@@ -253,3 +253,60 @@ However, since you're not using state, you can use defaultValue. This means the 
 ```
 $ npm i use-debounce
 ```
+
+# Chapter 12: Mutating Data
+## Creating an invoice
+### 1. Create a new route and form
+```
+$ mkdir app/dashboard/invoices/create
+$ vim app/dashboard/invoices/create/page.tsx
+```
+
+### 2. Create a Server Action
+```
+$ vim app/lib/actions.ts
+```
+- Good to know: In normal HTML, you'd pass a URL to the action attribute. This URL would be destination where your form data should be submitted (usually an API endpoint).
+- However, in React, the action attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
+- Behind the scenes, Server Actions create a POST API endpoint. This is why you don't need to create API endpoints when using Server Actions.
+
+### 3. Extract the data from formData
+- Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries(). For example:
+- `const rawFormData = Object.fromEntries(formData.entries())`
+
+### 4. Validate and prepare the data
+```
+$ npm i zod
+```
+
+### 5. Inserting the data into your database
+### 6. Revalidate and redirect
+
+## Updating an invoice
+1. Create a new dynamic route segment with the invoice id.
+2. Read the invoice id from the page params.
+3. Fetch the specific invoice from your database.
+4. Pre-populate the form with the invoice data.
+5. Update the invoice data in your database.
+### 1. Create a new dynamic route segment with the invoice id.
+```
+$ mkdir -p "app/dashboard/invoices/[id]/edit"
+$ vim "app/dashboard/invoices/[id]/edit/page.tsx"
+```
+### 4. Pass the id to the Server Action
+```
+const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+```
+- Note: Using a hidden input field in your form also works (e.g. <input type="hidden" name="id" value={invoice.id} />). However, the values will appear as full text in the HTML source, which is not ideal for sensitive data like ids.
+
+```
+$ vim app/lib/actions.ts
++  const { customerId, amount, status } = UpdateInvoice.parse({
++	id: formData.get('id'),
++    customerId: formData.get('customerId'),
++    amount: formData.get('amount'),
++    status: formData.get('status'),
++  });
+```
+- `id` is a required field in the UpdateInvoice schema, typo in the material
+## Deleting an invoice
