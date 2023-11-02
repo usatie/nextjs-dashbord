@@ -389,3 +389,23 @@ https://authjs.dev/getting-started/providers/oauth-tutorial
 https://authjs.dev/getting-started/providers/email-tutorial
 https://authjs.dev/getting-started/providers
 
+# Chapter 16 : Metadata
+## What is metadata?
+## Why is metadata important?
+## Types of metadata
+- `<title>`
+- `<meta name="description" content="A brief description of the page content.">`
+- `<meta name="keywords" content="comma,separated,list,of,keywords">`
+- `<meta property="og:title" content="Title Here" />`
+- `<meta property="og:description" content="Description Here" />`
+- `<meta property="og:image" content="image_url_here" />`
+- `<link rel="icon" href="path/to/favicon.ico" />`
+## Adding metadata
+- Config-based
+	- `static metadata object`
+	- dynamic `generateMetadata` function
+- File-based
+	- favicon.ico, apple-icon.jpg, and icon.jpg: Utilized for favicons and icons
+	- opengraph-image.jpg and twitter-image.jpg: Employed for social media images
+	- robots.txt: Provides instructions for search engine crawling
+	- sitemap.xml: Offers information about the website's structure
