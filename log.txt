@@ -321,3 +321,27 @@ $ vim app/dashboard/invoices/error.tsx
 
 ## Handling 404 errors with the notFound function
 - Invoking the notFound() function throws a NEXT_NOT_FOUND error and terminates rendering of the route segment in which it was thrown.
+
+# Chapter 14: Improving Accessibility
+## What is accessibility?
+https://web.dev/learn/accessibility/
+
+## Using the ESLint accessibility plugin in Next.js
+```
+$ vim package.json
++    "lint": "next lint --help"
+$ npm run lint
+Warning: Image elements must have an alt prop,
+```
+- I don't see the warning in my environment. Why?
+
+## Improving form accessibility
+- Semantic HTML
+- Labelling: `<label>` and the `htmlFor` attribute
+- Focus Outline: 
+
+## Form validation
+### Client-Side validation
+- `required` attribute to `<input>`, `<select>`, and `<textarea>` elements
+
+## Server-Side validation
