@@ -345,3 +345,47 @@ Warning: Image elements must have an alt prop,
 - `required` attribute to `<input>`, `<select>`, and `<textarea>` elements
 
 ## Server-Side validation
+
+# Chapter 15: Authentication
+## What is authentication?
+### Authentication vs. Authorization
+- Authentication checks who you are
+- Authorization determines what you can
+
+## Creating the login route
+```
+$ mkdir app/login
+$ vim app/login/page.tsx
+```
+
+## NextAuth.js
+https://authjs.dev/reference/nextjs
+
+## Setting up NextAuth.js
+```
+$ npm i next-auth@beta bcrypt
+$ openssl rand -base64 32
+$ vim .env
+AUTH_SECRET=
+AUTH_URL=http://localhost:3000/api/auth
+```
+
+## Protecting your routes with Next.js Middleware
+```
+$ vim auth.config.ts
+$ vim middleware.ts
+```
+### Password hashing
+- What is the difference between `auth.ts` and `middleware.ts`?
+- middleware.ts : `export default NextAuth(authConfig).auth;`
+- auth.ts : below
+```
+export const { auth, signIn, signOut } = NextAuth({
+	...authConfig,
+});
+```
+### Adding Credentials provider
+https://authjs.dev/getting-started/providers/oauth-tutorial
+https://authjs.dev/getting-started/providers/email-tutorial
+https://authjs.dev/getting-started/providers
+
