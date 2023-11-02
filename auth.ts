@@ -1,13 +1,14 @@
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
-import Credentials from "next-auth/providers/credentials";
+import Credentials from "@auth/core/providers/credentials";
+import { sql } from "@vercel/postgres";
 import { z } from "zod";
 import type { User } from "@/app/lib/definitions";
 import bcrypt from "bcrypt";
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    const user = sql<User>`SELECT * FROM users WHERE email = ${email}`;
+    const user = await sql<User>`SELECT * FROM users WHERE email = ${email}`;
     return user.rows[0];
   } catch (error) {
     console.error(error);
@@ -20,7 +21,7 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        parseCredentials = z
+        const parseCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
